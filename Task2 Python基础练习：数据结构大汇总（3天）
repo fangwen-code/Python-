@@ -42,8 +42,36 @@ count(str, beg= 0,end=len(string)): 返回str在 string 里面出现的次数，
 endswith(suffix, beg=0, end=len(string)): 检查字符串是否以指定子字符串 suffix 结束，如果是，返回 True，否则返回 False。如果 beg 和 end 指定值，则在指定范围内检查。
 startswith(substr, beg=0,end=len(string)): 检查字符串是否以指定子字符串 substr 开头，如果是，返回 True，否则返回 False。如果 beg 和 end 指定值，则在指定范围内检查。
 
-find(str, beg=0, end=len(string)) 检测 str 是否包含在字符串中，如果指定范围 beg 和 end，则检查是否包含在指定范围内，如果包含，返回开始的索引值，否则返回 -1。
-rfind(str, beg=0,end=len(string)) 类似于 find() 函数，不过是从右边开始查找。
+find(str, beg=0, end=len(string))：检测 str 是否包含在字符串中，如果指定范围 beg 和 end，则检查是否包含在指定范围内，如果包含，返回开始的索引值，否则返回 -1。
+rfind(str, beg=0,end=len(string))：类似于 find() 函数，不过是从右边开始查找。
 注：当指定的字符串中未找到指定的str时，find和rfind均会返回-1，而index则会报错。
 
-isnumeric() 如果字符串中只包含数字字符，则返回 True，否则返回 False。
+isnumeric()：如果字符串中只包含数字字符，则返回 True，否则返回 False。
+
+ljust(width[, fillchar]):返回一个原字符串左对齐，并使用fillchar（默认空格）填充至长度width的新字符串。
+rjust(width[, fillchar]):返回一个原字符串右对齐，并使用fillchar（默认空格）填充至长度width的新字符串。
+如：str4 = '1101'
+print(str4.ljust(8, '0'))  # 11010000
+print(str4.rjust(8, '0'))  # 00001101
+
+lstrip([chars])：截掉字符串左边的空格或指定字符。
+rstrip([chars])：删除字符串末尾的空格或指定字符。
+strip([chars])：在字符串上执行同时执行lstrip()和rstrip()。
+
+partition(sub)：找到子字符串sub，把字符串分为一个三元组(pre_sub,sub,fol_sub)，如果字符串中不包含sub则返回('原字符串','','')。
+rpartition(sub)：类似于partition()方法，不过是从右边开始查找。
+如：str5 = ' I Love LsgoGroup '
+print(str5.strip().partition('o'))  # ('I L', 'o', 've LsgoGroup')
+print(str5.strip().partition('m'))  # ('I Love LsgoGroup', '', '')
+print(str5.strip().rpartition('o'))  # ('I Love LsgoGr', 'o', 'up')
+
+replace(old, new [, max])：将字符串中的old替换成new，如果max指定，则替换不超过max次。
+split(str="", num)：不带参数默认是以空格为分隔符切片字符串，如果num参数有设置，则仅分隔num个子字符串（利用num个分隔符对字符串进行分隔），返回切片后的子字符串拼接的列表。
+
+
+四、字典
+1. 可变类型与不可变类型
+字典是 Python 唯一的一个映射类型，字符串、元组、列表属于序列类型。
+快速判断一个数据类型 X 是不是可变类型的两种方法：
+麻烦方法：用 id(X) 函数，对 X 进行某种操作，比较操作前后的 id，如果不一样，则 X 不可变，如果一样，则 X 可变。---此法可用于检验对象内存地址是否发生变化
+便捷方法：用 hash(X)，只要不报错，证明 X 可被哈希，即不可变，反过来不可被哈希，即可变。
