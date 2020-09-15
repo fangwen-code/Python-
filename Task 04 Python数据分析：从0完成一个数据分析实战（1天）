@@ -117,6 +117,15 @@ ax=sns.violinplot(x="type1",y="total_stats",data=df,palette="muted")
 ###简单过滤和排序
 df[(df.total_stats>=570)&(df.is_legendary==0)]['name'].head(10)
 
+sns.jointplot("base_egg_steps", "experience_growth", data=df, size=5, ratio=3, color="g")
+sns.jointplot("attack", "hp", data=df, kind="kde")
+
+# 双系宝可梦数量统计
+plt.subplots(figsize=(10, 10))
+sns.heatmap(df[df['type2']!='None'].groupby(['type1', 'type2']).size().unstack(),linewidths=1,annot=True,cmap="Blues")
+plt.xticks(rotation=35)  ###横坐标标签旋转35度
+plt.show()
+
 补充：
 wget的常见用法：
 a、下载整个http或是ftp站点
