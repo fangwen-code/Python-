@@ -1,5 +1,11 @@
 20200915
 阿里云天池————Python数据分析：从0完成一个数据分析实战（1天）
+总结：整个分析过程完成下来，对于pandas的熟悉度不够，后续将继续补充pandas相关知识点
+
+20200922
+阿里云天池————25道测试题
+总结：测试题中包含许多重要的知识点，非常感谢给我们提供学习的平台，但是我在测试过程中发现一点点小瑕疵，即有一个题目是不完整的，感觉题目没出完
+
 step1————数据集下载：
 $wget -O pokemon_data.csv https://pai-public-data.oss-cn-beijing.aliyuncs.com/pokemon/pokemon.cvs
 注：补充的wget的常见方法见末尾
