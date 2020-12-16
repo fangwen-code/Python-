@@ -1,3 +1,5 @@
+利用Demo数据实战第一天：
+################################################################################
 #!/usr/bin/env python
 '''sklearn function for logistic regression Demo training'''
 
@@ -90,3 +92,32 @@ print('The New point 1 predict Probability of each class:\n',y_label_new1_predic
 print('The New point 2 predict Probability of each class:\n',y_label_new2_predict_proba)
 
 训练好的回归模型将X_new1预测为了类别0（判别面左下侧），X_new2预测为了类别1（判别面右上侧）。
+
+补充：
+predict和predict_proba
+k分类问题中，测试集中共有n个样本：
+predict》》》返回的是一个大小为n的一维数组，一维数组中的第i个值为模型预测第i个预测样本的标签；
+predict_proba》》》返回的是一个n行k列的数组，第i行第j列上的数值是模型预测第i个预测样本的标签为j的概率。每一行的和应该等于1。
+如：
+>>> x_train = np.array([[1,2,3],[1,3,4],[2,1,2],[4,5,6],[3,5,3],[1,7,2]])
+>>> y_train = np.array([0, 0, 0, 1, 1, 1])
+>>> x_test = np.array([[2,2,2],[3,2,6],[1,7,4]])
+>>> clf = LogisticRegression()
+>>> clf.fit(x_train, y_train)
+# 返回预测标签
+>>> clf.predict(x_test)
+array([1, 0, 1])
+
+预测[2,2,2]、[3,2,6]和[1,7,4]的标签分别是1，0，1
+
+# 返回预测属于某标签的概率
+>>> clf.predict_proba(x_test)
+array([[ 0.43348191, 0.56651809],[ 0.84401838, 0.15598162],[ 0.13147498, 0.86852502]])
+
+预测[2,2,2]的标签是0的概率为0.43348191，1的概率为0.56651809
+
+预测[3,2,6]的标签是0的概率为0.84401838，1的概率为0.15598162
+
+预测[1,7,4]的标签是0的概率为0.13147498，1的概率为0.86852502
+
+所以，若希望预测结果直接是某预测标签，则用predict；若希望预测结果是标签的概率则用predict_proba
